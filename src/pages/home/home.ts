@@ -33,7 +33,8 @@ export class HomePage {
   }
 
   onItemClick (note){
-    console.log ('item-click', note);
+    //console.log ('item-click', note);
+    this.navCtrl.push ('DetailPage', {noteParam: note });
   }
 
 }
