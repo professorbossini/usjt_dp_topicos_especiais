@@ -7,6 +7,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{note.title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onTrash()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -15,16 +20,16 @@
     
     <ion-item>
       <ion-label fixed>Title</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" [(ngModel)]="note.title"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>Date</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-datetime type="text" displayFormat="DD/MM/YYYY" [(ngModel)]="note.date"></ion-datetime>
     </ion-item>
 
     <ion-item>
-      <ion-textarea placeholder="Content"></ion-textarea>
+      <ion-textarea placeholder="Content" [(ngModel)]="note.content"></ion-textarea>
     </ion-item>
   </ion-list>
 </ion-content>

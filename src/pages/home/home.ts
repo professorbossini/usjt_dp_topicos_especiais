@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { NoteService } from '../../app/note.service';
 
 @Component({
   selector: 'page-home',
@@ -7,29 +8,12 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  notes = [
-    {
-      id: '1',
-      date: '2016-02-01',
-      title: 'Firebase',
-      content: "Que tal programar serverless?" 
-    },
-    {
-      id: '2',
-      date: '2016-02-03',
-      title: "Ionic",
-      content: "Aprenda o básico de Ionic"
-    },
-    {
-      id: "3",
-      date: '2016-08-01',
-      title: "Angular",
-      content: "Importante para desenvolver com Ionic"
-    }
-  ]
-
-  constructor(public navCtrl: NavController) {
-
+  
+  notes;
+  //ilustra a injeção de dependência
+  //é um tipo de inversão de controle
+  constructor(public navCtrl: NavController, public noteService: NoteService) {
+    this.notes = this.noteService.notes;
   }
 
   onItemClick (note){
