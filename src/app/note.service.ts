@@ -1,5 +1,27 @@
+import { AngularFireDatabase } from "angularfire2/database";
+import { Injectable } from "@angular/core";
+
+@Injectable()
 export class NoteService{
-    notes = [
+    
+  constructor (public db: AngularFireDatabase){
+
+  }
+
+  fetchNotes (){
+    return this.db.list ("/notes");
+  }
+
+  addNote (note){
+    //linha existente
+    this.db.list('/notes').push({
+      title: note.title,
+      content: note.content,
+      date: note.date
+    });
+  }
+  
+  notes = [
         {
           id: '1',
           date: '2016-02-01',
